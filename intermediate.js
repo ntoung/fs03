@@ -120,4 +120,49 @@ function fibonacci(n) {
 }
 
 
+/* 5. Greatest common divisor */
+/* How would you find the greatest common divisor of two numbers */
 
+// Method 1 (simple)
+function greatestCommonDivisor(a, b) {
+	var divisor  = 2,
+		greatestDivisor = 1;
+
+	if (a < 2 || b < 2) 
+		return 1;
+
+	while (a >= divisor && b >= divisor) {
+		if (a % divisor == 0 && b % divisor == 0) {
+			greatestDivisor = divisor;
+		}
+
+		divisor++;
+	}
+
+	return greatestDivisor;
+}
+
+// Method 2 (advanced)
+function greatestCommonDivisor(a, b) {
+	if (b == 0)
+		return a;
+	else 
+		return greatestCommonDivisor(b, a%b);
+}
+
+/* 6. Swap numbers without temp */
+/* How would you swap two numbers without using a temp */
+
+// Method 1 (simple)
+function swapNumber(a, b) {
+	b = b - a;
+	a = a + b;
+	b = a - b;
+}
+
+// Method 2 (bit-shift)
+function swapNumber(a, b) {
+	a = a ^ b;
+	b = a ^ b;
+	a = a ^ b;
+}
