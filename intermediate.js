@@ -166,3 +166,54 @@ function swapNumber(a, b) {
 	b = a ^ b;
 	a = a ^ b;
 }
+
+/* 7. String reverse */
+/* How would you reverse a string? */
+
+// Method 1 (simple)
+function reverse(str) {
+	var result = '';
+
+	for (var i = str.length - 1; i >= 0; i--) {
+		result += str[i];
+	}
+
+	return result;
+}
+
+// Method 2 (no concatenation)
+function reverse(str) {
+	var result = [];
+
+	if (!str || typeof str != 'string' || str.length < 2) return str;
+
+	for (var i = str.length - 1; i >= 0; i--) {
+		result.push(str[i]);
+	}
+
+	return result.join('');
+}
+
+// Method 3 (faster)
+function reverse(str) {
+	str = str.split('');
+	var len = str.length,
+		midPoint = Math.floor(len / 2) - 1,
+		swap = '';
+
+	for (var i = 0; i <= midPoint; i++) {
+		swap = str[len-i-1];
+		str[len-i-1] = str[i];
+		str[i] = swap;
+	}
+
+	return str.join('');
+}
+
+// Method 4 (recursion)
+function reverse(str) {
+	if (str === "") 
+		return "";
+	else 
+		return reverse(str.substr(1)) + str.charAt(0);
+}
