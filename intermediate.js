@@ -1,7 +1,7 @@
 /* 1. Remove duplicate */
 /* Question: How would you remove duplicate members from an array? */
 
-// Method 1
+// Method 1 (simple)
 function removeDuplicate(arr) { 
 	var exists = {};
 	var result = [];
@@ -18,8 +18,8 @@ function removeDuplicate(arr) {
 	return result;
 }
 
-// Method 2
-function removeDuplicateMap(arr) {
+// Method 2 (map)
+function removeDuplicate(arr) {
 	var seen = {}, result = [];
 
 	arr.map(function(value) {
@@ -31,3 +31,46 @@ function removeDuplicateMap(arr) {
 
 	return result;
 }
+
+/* 2. Check prime numbers */
+/* Question: How would you verify a prime number? */
+
+// Method 1 (simple)
+function isPrime(n) {
+	var divisor = 2;
+	while (divisor < n) {
+		if (n % divisor == 0) {
+			return false;
+		}
+		else {
+			divisor++;	
+		}
+	}
+
+	return true;
+}
+
+
+// Method 2 (better)
+function isPrime(n) {
+	// You don't have to check multiples of numbers already examined, like 
+	// even numbers.
+	var divisor = 3,
+		limit = Math.sqrt(n);
+
+	// Check simple cases
+	if (n == 2 || n == 3)
+		return true;
+	if (n % 2 == 0) 
+		return false;
+	
+	while (divisor <= limit) {
+		if (n % divisor == 0) 
+			return false;
+		else
+			divisor += 2;
+	}
+
+	return true;
+}
+
