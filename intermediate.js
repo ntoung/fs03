@@ -74,3 +74,27 @@ function isPrime(n) {
 	return true;
 }
 
+/* 3. Prime factors */
+/* How would you find all prime factors of a number? */
+
+// Method 1 (simple)
+function primeFactors(n) {
+	var result = [],
+		divisor = 2;
+
+	while (n > 2) {
+		if (n % divisor == 0) {
+			result.push(divisor);
+			n = n / divisor;
+		}
+		else {
+			divisor++;
+		}
+	}
+
+	return result;
+}
+
+
+
+
